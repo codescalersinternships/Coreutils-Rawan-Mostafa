@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"os"
@@ -22,11 +23,14 @@ func main() {
 	data, err := os.ReadFile(flag.Args()[0])
 	check(err)
 
-	dataArray := strings.Split(string(data), "\n")
-	if n >= len(dataArray) {
-		n = len(dataArray) -1 
+	scanner := bufio.NewScanner(strings.NewReader(string(data)))
+	scanner.Split(bufio.ScanLines)
+	count := 0
+	for scanner.Scan() {
+		count++
+		if count <= n {
+			fmt.Printf("%s \n", string(scanner.Bytes()))
+		}
 	}
-	for i := 0; i < n; i++ {
-		fmt.Println(dataArray[i])
-	}
+	check(scanner.Err())
 }
