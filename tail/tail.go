@@ -23,10 +23,13 @@ func main() {
 	check(err)
 
 	dataArray := strings.Split(string(data), "\n")
-	if n > len(dataArray) {
-		n = len(dataArray)
-	}
-	for i := len(dataArray) - n; i < len(dataArray); i++ {
-		fmt.Println(dataArray[i])
+	if n >= len(dataArray)-1 {
+		for i := 0; i < len(dataArray)-1; i++ {
+			fmt.Println(dataArray[i])
+		}
+	} else {
+		for i := len(dataArray) - 1 - n; i < len(dataArray)-1; i++ {
+			fmt.Println(dataArray[i])
+		}
 	}
 }

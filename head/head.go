@@ -23,8 +23,8 @@ func main() {
 	check(err)
 
 	dataArray := strings.Split(string(data), "\n")
-	if n > len(dataArray) {
-		n = len(dataArray)
+	if n >= len(dataArray) {
+		n = len(dataArray) -1 
 	}
 	for i := 0; i < n; i++ {
 		fmt.Println(dataArray[i])
