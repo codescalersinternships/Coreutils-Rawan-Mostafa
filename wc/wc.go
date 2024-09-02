@@ -21,6 +21,9 @@ func main() {
 	charsOnly := flag.Bool("c", false, "prints the characters count only")
 
 	flag.Parse()
+	if len(flag.Args()) == 0 {
+		panic("No file argument passed to the command")
+	}
 	data, err := os.ReadFile(flag.Args()[0])
 	check(err)
 

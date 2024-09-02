@@ -20,6 +20,9 @@ func main() {
 
 	flag.IntVar(&n, "n", 10, "defines the number fo lines to be printed")
 	flag.Parse()
+	if len(flag.Args()) == 0 {
+		panic("No file argument passed to the command")
+	}
 	data, err := os.ReadFile(flag.Args()[0])
 	check(err)
 

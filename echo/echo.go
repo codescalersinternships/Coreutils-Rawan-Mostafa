@@ -12,7 +12,7 @@ func main() {
 	for _, arg := range flag.Args() {
 		fmt.Printf("%s ", arg)
 	}
-	if !*noNewLine && len(flag.Args()) != 0 {
+	if !*noNewLine {
 		fmt.Print("\n")
 	}
 }

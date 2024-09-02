@@ -42,5 +42,11 @@ func main() {
 	var maxDepth int
 	flag.IntVar(&maxDepth, "L", 1, "Print files and directories up to 'L' levels of depth")
 	flag.Parse()
-	tree(flag.Args()[0], 0, maxDepth)
+	if len(flag.Args()) == 0 {
+		currDir, err := os.Getwd()
+		check(err)
+		tree(currDir, 0, maxDepth)
+	} else {
+		tree(flag.Args()[0], 0, maxDepth)
+	}
 }
