@@ -2,17 +2,15 @@ package main
 
 import (
 	"flag"
-	"fmt"
+
+	internal "github.com/codescalersinternships/Coreutils-Rawan-Mostafa/internal"
 )
 
 func main() {
+	var noNewLine bool
 
-	noNewLine := flag.Bool("n", false, "defines whether or not to add a new line")
+	flag.BoolVar(&noNewLine, "n", false, "defines whether or not to add a new line")
 	flag.Parse()
-	for _, arg := range flag.Args() {
-		fmt.Printf("%s ", arg)
-	}
-	if !*noNewLine {
-		fmt.Print("\n")
-	}
+
+	internal.Echo(noNewLine, flag.Args())
 }
