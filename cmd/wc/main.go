@@ -3,67 +3,39 @@ package main
 import (
 	"bufio"
 	"flag"
-	"fmt"
+	"log"
 	"os"
 	"strings"
-)
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
+	internal "github.com/codescalersinternships/Coreutils-Rawan-Mostafa/internal"
+)
 
 func main() {
 
-	linesOnly := flag.Bool("l", false, "prints the lines count only")
-	wordsOnly := flag.Bool("w", false, "prints the words count only")
-	charsOnly := flag.Bool("c", false, "prints the characters count only")
+	var isLines bool
+	var isWords bool
+	var isChars bool
+
+	flag.BoolVar(&isLines, "l", false, "prints the lines count only")
+	flag.BoolVar(&isWords, "w", false, "prints the words count only")
+	flag.BoolVar(&isChars, "c", false, "prints the characters count only")
 
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		panic("No file argument passed to the command")
+		log.Fatal("No file argument passed to the command")
 	}
 	data, err := os.ReadFile(flag.Args()[0])
-	check(err)
+	if err != nil {
+		log.Fatal("Error in reading the file")
+	}
+	scanner := bufio.NewScanner(strings.NewReader(string(data)))
 
-	if !*linesOnly && !*wordsOnly && !*charsOnly {
-		*linesOnly = true
-		*wordsOnly = true
-		*charsOnly = true
+	if !isLines && !isWords && !isChars {
+		isLines = true
+		isWords = true
+		isChars = true
 	}
 
-	if *linesOnly {
-		scanner := bufio.NewScanner(strings.NewReader(string(data)))
-		scanner.Split(bufio.ScanLines)
-		count := 0
-		for scanner.Scan() {
-			count++
-		}
-		check(scanner.Err())
-		fmt.Printf("%d ", count)
-	}
-	if *wordsOnly {
-		scanner := bufio.NewScanner(strings.NewReader(string(data)))
-
-		scanner.Split(bufio.ScanWords)
-
-		count := 0
-		for scanner.Scan() {
-			count++
-		}
-		check(scanner.Err())
-		fmt.Printf("%d ", count)
-	}
-	if *charsOnly {
-		scanner := bufio.NewScanner(strings.NewReader(string(data)))
-		scanner.Split(bufio.ScanBytes)
-		count := 0
-		for scanner.Scan() {
-			count++
-		}
-		check(scanner.Err())
-		fmt.Printf("%d ", count)
-	}
+	internal.Wc(scanner, isLines, isWords, isChars)
 
 }
