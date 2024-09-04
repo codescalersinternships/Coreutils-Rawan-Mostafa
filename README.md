@@ -1,6 +1,7 @@
 # Unix Coreutils
 ## Description
-This implements the 
+This repo implements the Unix coreutils like `head` `tail` `cat` `echo` `wc` `tree` `yes` `false` `true` `env` in Golang
+
 ## Table of Contents
 
 - <a href ="#head">head</a>
@@ -14,36 +15,31 @@ This implements the
 
  <a id = "head"></a>
  
- ## 1- head
+## 1- head
 ### Description
   head outputs the first part of the file 
 ### Flags
 `-n=num` : print the first NUM lines instead of the first 10
 ### How to use 
 ```
-cd head
+go run cmd/head/main.go [OPTIONS] [FILE]
 ```
-```
-./head [OPTION] [FILE]
-```
+
  <a id = "tail"></a>
  
- ## 2- tail
+## 2- tail
 ### Description
   tail outputs the last part of the file 
 ### Flags
 `-n=NUM` : print the last NUM lines instead of the last 10
 ### How to use 
 ```
-cd tail
-```
-```
-./tail [OPTION] [FILE]
+go run cmd/tail/main.go [OPTIONS] [FILE]
 ```
 
  <a id = "cat"></a>
  
- ## 3- cat
+## 3- cat
 ### Description
   cat concatenate files and print on the standard output
   With no FILE, or when FILE is -, read standard input.
@@ -51,50 +47,43 @@ cd tail
 `-n` : number all the output lines
 ### How to use 
 ```
-cd cat
-```
-```
-./cat [OPTION] [FILE]
+go run cmd/cat/main.go [OPTIONS] [FILE]
 ```
 
  <a id = "echo"></a>
 
- ## 4- echo
+## 4- echo
 ### Description
    echo echoes the STRING(s) to standard output.
 ### Flags
 `-n` : don't output the trailing newline
 ### How to use 
+
 ```
-cd echo
-```
-```
-./echo [OPTION]... [STRING]...
+go run cmd/echo/main.go [OPTIONS] [FILE]
 ```
 
   <a id = "wc"></a>
 
- ## 5- wc
+## 5- wc
  
 ### Description
    wc print newline, word, and byte counts for each file
    
 ### Flags
-`-c` : print the bytes counts
-`-m` : print the character counts
-`-l` : print the newline counts
+- `-c` : print the bytes counts
+- `-m` : print the character counts
+- `-l` : print the newline counts
 
 ### How to use 
+
 ```
-cd wc
-```
-```
-./wc [OPTION]... [FILE]
+go run cmd/wc/main.go [OPTIONS] [FILE]
 ```
 
   <a id = "tree"></a>
 
- ## 6- tree
+## 6- tree
  
 ### Description
   tree prints the heirarchy of a given directory
@@ -103,9 +92,7 @@ cd wc
 `-L=LEVEL` : print the heirarchy down to LEVEL number of levels
 
 ### How to use 
+
 ```
-cd tree
-```
-```
-./tree [OPTION]... [PATH]
+go run cmd/tree/main.go [OPTIONS] [FILE]
 ```
