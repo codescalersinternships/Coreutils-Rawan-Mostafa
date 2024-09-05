@@ -9,16 +9,7 @@ on:
 jobs:        
   goreleaser:
     runs-on: ubuntu-latest
-    main: ./cmd/cat
-    main: ./cmd/echo
-    main: ./cmd/env
-    main: ./cmd/false
-    main: ./cmd/head
-    main: ./cmd/tail
-    main: ./cmd/tree
-    main: ./cmd/true
-    main: ./cmd/wc
-    main: ./cmd/yes
+    main: ./cmd
     permissions:
       contents: write
     steps:
