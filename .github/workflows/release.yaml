@@ -9,7 +9,6 @@ on:
 jobs:        
   goreleaser:
     runs-on: ubuntu-latest
-    main: ./cmd
     permissions:
       contents: write
     steps:
@@ -29,6 +28,5 @@ jobs:
           version: latest
           args: release --clean
         env:
-          # GitHub sets this automatically
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
