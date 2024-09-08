@@ -6,8 +6,14 @@ import (
 )
 
 func Yes(inputs []string) {
-	input := strings.Join(inputs, " ")
-	for {
-		fmt.Println(input)
+	if len(inputs) > 0 {
+		input := strings.Join(inputs, " ")
+		for {
+			fmt.Println(input)
+		}
+	} else {
+		for {
+			fmt.Println("y")
+		}
 	}
 }

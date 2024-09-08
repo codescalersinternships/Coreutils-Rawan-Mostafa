@@ -2,13 +2,13 @@ package internal
 
 import (
 	"fmt"
+	"strings"
 )
 
 func Echo(noNewLine bool, args []string) {
 
-	for _, arg := range args {
-		fmt.Printf("%s ", arg)
-	}
+	argString := strings.Join(args, " ")
+	fmt.Print(argString)
 	if !noNewLine {
 		fmt.Print("\n")
 	}

@@ -3,10 +3,9 @@ package internal
 import (
 	"bufio"
 	"fmt"
-	"log"
 )
 
-func Cat(scanner *bufio.Scanner, numbering bool) {
+func Cat(scanner *bufio.Scanner, numbering bool) error {
 
 	scanner.Split(bufio.ScanLines)
 	count := 0
@@ -17,8 +16,6 @@ func Cat(scanner *bufio.Scanner, numbering bool) {
 		} else {
 			fmt.Printf("%s\n", string(scanner.Bytes()))
 		}
-		if scanner.Err() != nil {
-			log.Fatal("Error in scanning std input")
-		}
 	}
+	return scanner.Err()
 }

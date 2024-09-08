@@ -3,10 +3,9 @@ package internal
 import (
 	"bufio"
 	"fmt"
-	"log"
 )
 
-func Wc(scanner *bufio.Scanner, isLines bool, isWords bool, isChars bool) {
+func Wc(scanner *bufio.Scanner, isLines bool, isWords bool, isChars bool) error {
 
 	var linesCount int
 	var wordsCount int
@@ -21,9 +20,7 @@ func Wc(scanner *bufio.Scanner, isLines bool, isWords bool, isChars bool) {
 			if char == ' ' || char == '\n' || char == '\t' {
 				wordsCount++
 			}
-			if scanner.Err() != nil {
-				log.Fatal("Error in scanning std input")
-			}
+
 		}
 		wordsCount += 1
 		charsCount += 1
@@ -39,4 +36,5 @@ func Wc(scanner *bufio.Scanner, isLines bool, isWords bool, isChars bool) {
 		fmt.Printf("%d ", charsCount)
 	}
 	fmt.Print("\n")
+	return scanner.Err()
 }

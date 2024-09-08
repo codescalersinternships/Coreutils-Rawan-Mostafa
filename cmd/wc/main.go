@@ -36,6 +36,9 @@ func main() {
 		isChars = true
 	}
 
-	internal.Wc(scanner, isLines, isWords, isChars)
+	err = internal.Wc(scanner, isLines, isWords, isChars)
+	if err != nil {
+		log.Fatal("Error in scanning std input")
+	}
 
 }

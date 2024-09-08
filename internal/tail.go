@@ -3,10 +3,9 @@ package internal
 import (
 	"bufio"
 	"fmt"
-	"log"
 )
 
-func Tail(scanner *bufio.Scanner, n int) {
+func Tail(scanner *bufio.Scanner, n int) error {
 
 	scanner.Split(bufio.ScanLines)
 	count := 0
@@ -15,14 +14,12 @@ func Tail(scanner *bufio.Scanner, n int) {
 		count++
 		lines = append(lines, string(scanner.Bytes()))
 	}
-	if scanner.Err() != nil {
-		log.Fatal("Error in scanning std input")
-	}
+
 	if n >= len(lines) {
 		n = len(lines)
 	}
 	for i := len(lines) - n; i < len(lines); i++ {
 		fmt.Println(lines[i])
 	}
-
+	return scanner.Err()
 }

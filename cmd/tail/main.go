@@ -26,5 +26,8 @@ func main() {
 
 	scanner := bufio.NewScanner(strings.NewReader(string(data)))
 
-	internal.Tail(scanner, n)
+	err = internal.Tail(scanner, n)
+	if err != nil {
+		log.Fatal("Error in scanning std input")
+	}
 }

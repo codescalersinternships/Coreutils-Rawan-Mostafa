@@ -1,12 +1,6 @@
 name: Go CI
 
-on:
-  push:
-    branches: [ "main" ]
-
-  pull_request:
-    branches: [ "main" ]
-
+on: [push, pull_request]
 
 jobs:
   build:
@@ -22,9 +16,7 @@ jobs:
 
 
   lint_and_format:
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
@@ -37,5 +29,8 @@ jobs:
           version: v1.56.0
           args: --timeout 3m
       - name: Go Format
-        run: gofmt -s -w . && git diff --exit-code
+        uses: Jerome1337/gofmt-action@v1.0.5
+        with:
+          gofmt-path: './src'
+          gofmt-flags: '-l -d'
         
