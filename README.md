@@ -9,7 +9,11 @@ This repo implements the Unix coreutils like `head` `tail` `cat` `echo` `wc` `tr
 - <a href ="#cat">cat</a>
 - <a href ="#echo">echo</a>
 - <a href ="#wc">wc</a>
-- <a href ="#tree">tree</a>
+- <a href ="#yes">yes</a>
+- <a href ="#true">true</a>
+- <a href ="#false">false</a>
+- <a href ="#env">env</a>
+
 
 <hr style="background-color: #4b4c60"></hr>
 
@@ -60,7 +64,7 @@ go run cmd/cat/main.go [OPTIONS] [FILE]
 ### How to use 
 
 ```
-go run cmd/echo/main.go [OPTIONS] [FILE]
+go run cmd/echo/main.go [OPTIONS] [STRING]
 ```
 
   <a id = "wc"></a>
@@ -95,4 +99,52 @@ go run cmd/wc/main.go [OPTIONS] [FILE]
 
 ```
 go run cmd/tree/main.go [OPTIONS] [FILE]
+```
+
+  <a id = "yes"></a>
+
+## 7- yes
+ 
+### Description
+  yes repeatedly output a line with all specified STRING(s), or 'y'until killed
+
+### How to use 
+
+```
+go run cmd/yes/main.go [STRING]
+```
+
+  <a id = "true"></a>
+
+## 8- true
+ 
+### Description
+  true do nothing, successfully, exit with a status code indicating success.
+
+### How to use 
+
+```
+go run cmd/true/main.go 
+```
+
+## 9- false
+ 
+### Description
+  true do nothing, unsuccessfully, exit with a status code indicating failure.
+
+### How to use 
+
+```
+go run cmd/false/main.go 
+```
+
+## 10- env
+ 
+### Description
+  env prints the resulting environment.
+
+### How to use 
+
+```
+go run cmd/env/main.go 
 ```
