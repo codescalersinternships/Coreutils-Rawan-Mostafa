@@ -5,7 +5,6 @@ import (
 	"flag"
 	"log"
 	"os"
-	"strings"
 
 	internal "github.com/codescalersinternships/Coreutils-Rawan-Mostafa/internal"
 )
@@ -19,12 +18,14 @@ func main() {
 	if len(flag.Args()) == 0 {
 		log.Fatal("No file argument passed to the command")
 	}
-	data, err := os.ReadFile(flag.Args()[0])
-	if err != nil {
-		log.Fatal("Error in reading the file")
-	}
 
-	scanner := bufio.NewScanner(strings.NewReader(string(data)))
+	filePath := flag.Args()[0]
+	file, err := os.Open(filePath)
+	if err != nil {
+		log.Fatal("Error in opening the file")
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
 
 	err = internal.Tail(scanner, n)
 	if err != nil {
