@@ -8,10 +8,8 @@ import (
 func Tail(scanner *bufio.Scanner, n int) error {
 
 	scanner.Split(bufio.ScanLines)
-	count := 0
 	lines := make([]string, 0)
 	for scanner.Scan() {
-		count++
 		lines = append(lines, string(scanner.Bytes()))
 	}
 

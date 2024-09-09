@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -18,8 +19,8 @@ func Tree(directoryPath string, depth int, maxDepth int) {
 	if err != nil {
 		log.Fatalf("Error reading items in: %s", directoryPath)
 	}
-	pathParts := strings.Split(directoryPath, "/")
-	formattedPrint(pathParts[len(pathParts)-1], depth)
+	lastPathElement := filepath.Base(directoryPath)
+	formattedPrint(lastPathElement, depth)
 
 	for _, item := range items {
 		if depth+1 > maxDepth {

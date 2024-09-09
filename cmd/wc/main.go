@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -24,7 +25,8 @@ func main() {
 	if len(flag.Args()) == 0 {
 		log.Fatal("No file argument passed to the command")
 	}
-	data, err := os.ReadFile(flag.Args()[0])
+	file:=flag.Args()[0]
+	data, err := os.ReadFile(file)
 	if err != nil {
 		log.Fatal("Error in reading the file")
 	}
@@ -40,5 +42,5 @@ func main() {
 	if err != nil {
 		log.Fatal("Error in scanning std input")
 	}
-
+	fmt.Println(file)
 }

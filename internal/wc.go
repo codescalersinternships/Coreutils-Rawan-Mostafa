@@ -35,6 +35,5 @@ func Wc(scanner *bufio.Scanner, isLines bool, isWords bool, isChars bool) error 
 	if isChars {
 		fmt.Printf("%d ", charsCount)
 	}
-	fmt.Print("\n")
 	return scanner.Err()
 }
