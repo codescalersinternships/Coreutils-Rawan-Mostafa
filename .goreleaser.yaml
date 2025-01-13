@@ -1,0 +1,36 @@
+builds:
+  - main: ./cmd/cat
+    id: "cat"
+    binary: cat
+
+  - main: ./cmd/echo
+    id: "echo"
+    binary: echo
+
+  - main: ./cmd/env
+    id: "env"
+    binary: env
+
+  - main: ./cmd/false
+    id: "false"
+    binary: False_
+
+  - main: ./cmd/head
+    id: "head"
+    binary: head
+
+  - main: ./cmd/tail
+    id: "tail"
+    binary: tail
+
+  - main: ./cmd/tree
+    id: "tree"
+    binary: tree
+
+  - main: ./cmd/wc
+    id: "wc"
+    binary: wc
+
+  - main: ./cmd/yes
+    id: "yes"
+    binary: yes_
